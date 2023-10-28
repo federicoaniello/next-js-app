@@ -1,41 +1,27 @@
-import { IProduct } from "@/interfaces/IProduct";
 import { NextRequest, NextResponse } from "next/server";
+import { prisma } from "../../../../prisma/client/client";
+import { productSchema } from "./schema";
 
-export let products: IProduct[] = [
-    {
-        id: 1,
-        name: "Milk",
-        price: 2.5
-    },
-    {
-        id: 2,
-        name: "Bread",
-        price: 3.5
-    }
-]
-
-export function GET (request: NextRequest) {
+export async function GET (request: NextRequest) {
+    const products = await prisma.product.findMany();
     return NextResponse.json(products);
 }
 
 export async function POST (request: NextRequest) {
     const body = await request.json();
-    const product: IProduct = {
-        id: Math.random(),
-        ...body
+    const validation = productSchema.safeParse(body);
+    if(!validation.success) return NextResponse.json({ error: validation.error.errors }, { status: 400 });
+
+    try {
+        const product = await prisma.product.create({
+            data:{
+                name: body.name,
+                price: body.price
+            }
+        });
+        return NextResponse.json(product, { status: 201 });
+    } catch (error) {
+        return NextResponse.json({ error: error }, { status: 500 });
     }
-    products.push(product);
-    return NextResponse.json(product, { status: 201 });
 }
 
-export async function PUT (request: NextRequest) {
-    const body = await request.json();
-    const productToChangeIndex = products.findIndex(product => product.id === body.id);
-    if (productToChangeIndex === -1) return NextResponse.json({ error: "Product not found" }, { status: 404 });
-    const productToChange = {
-        ...products[productToChangeIndex],
-        ...body
-    }
-    products[productToChangeIndex] = productToChange;
-    return NextResponse.json(productToChange, { status: 201 });
-}

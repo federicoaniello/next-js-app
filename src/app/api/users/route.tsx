@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { schema } from "./schema";
+import { UserSchema } from "./schema";
 import { prisma } from "../../../../prisma/client/client";
 
 export async function GET(request: NextRequest) {
@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
     const body = await request.json();
-    const validation = schema.safeParse(body);
+    const validation = UserSchema.safeParse(body);
     if (!validation.success) return NextResponse.json(validation.error.errors, { status: 400 });
     
     const user = await prisma.user.findUnique({where: {email: body.email}});
