@@ -3,8 +3,10 @@ import React, { Suspense } from 'react'
 import UsersTable from './UsersTable';
 import { SortByKey } from '@/types/TSortByKey';
 import GoToHome from './GoToHome';
+
 export const metadata: Metadata = {
     title: 'Users',
+    authors: {name:'Federico Aniello'}
   }
 
   interface Props {

@@ -26,6 +26,7 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "aws-sdk": "^2.1483.0",
     "prisma": "^5.5.2"
   }
 }

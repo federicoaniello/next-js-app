@@ -1,10 +1,17 @@
 import './globals.scss'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Roboto } from 'next/font/google'
 import Sidebar from './Sidebar';
 
 
-const inter = Inter({ subsets: ['latin'] })
+
+const roboto = Roboto({
+  weight: ['400', '700'],
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
+  display: 'swap',
+})
+
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -17,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className='w-full h-full'>
+    <html lang="en" className={`w-full h-full ${roboto.className}`}>
       <body className="grid grid-cols-[1px_1fr] md:grid-cols-[200px_1fr] h-full">
         <aside className="bg-slate-200 md:max-w-sm md:w-full overflow-hidden :hover:translate-x-[200]">
           <Sidebar></Sidebar>

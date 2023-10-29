@@ -7,7 +7,7 @@ const Sidebar = () => {
               <Link className='bg-indigo-400 rounded py-2' href="/">Home</Link>
       <Link className='bg-indigo-400 rounded py-2' href="/admin">Admin</Link>
       <Link className='bg-indigo-400 rounded py-2'  href="/users">Users</Link>
-
+      <Link className='bg-indigo-400 rounded py-2'  href="/uploadImage">Upload</Link>
     </section>
   )
 }
