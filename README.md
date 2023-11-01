@@ -1,8 +1,30 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+App che permette una navigazione basilare. Ho creato un collegamento con un database PostgreSQL in locale, utilizzando Next.js è possibile utilizzare un ORM come Prisma per scambiare i dati in modo sicuro. Inoltre, è possibile caricare documenti su un bucket Amazon S3.
 
 ## Getting Started
 
-First, run the development server:
+Create a postgreSQL database (user: postgres, database name: postgres, port: 5432)
+
+Create a .env file in the root of your project
+
+set these strings: 
+
+```bash
+AWS_ACCESS_KEY_ID=<set your aws key here>
+AWS_SECRET_ACCESS_KEY=<set your aws secret here>
+BUCKET_NAME=<set your s3 bucket name here>
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/postgres
+```
+
+Then
+
+```bash
+npx prisma migrate dev 
+```
+
+
+
+Run the development server:
 
 ```bash
 npm run dev
