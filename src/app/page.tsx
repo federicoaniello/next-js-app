@@ -9,7 +9,6 @@ export default function Home() {
 
   const handleClick = (ev: React.MouseEvent<HTMLButtonElement>) => {
     ev.preventDefault();
-    console.log(inputRef.current?.value);
   }
 
   return (

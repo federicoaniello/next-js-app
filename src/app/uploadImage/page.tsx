@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from 'react'
-import aws from '../s3/aws';
 const Page = () => {
     const [message, setmessage] = useState<string | null>(null);
     const [file, setfile] = useState<File | null>(null);
@@ -13,8 +12,14 @@ const Page = () => {
     const uploadFile = async () => {
         setmessage("Uploading...");
         if(file){
-            const returnData = await aws(file);
-            setmessage(String(returnData));
+          const formData = new FormData();
+          formData.append("file", file);
+            const returnData = await fetch("/api/upload", {
+              method: "POST",
+              body: formData,
+            });
+            console.log(returnData);
+            setmessage(String(returnData.json()));
             setfile(null);
         }
 
@@ -24,7 +29,7 @@ const Page = () => {
       <p>Upload file:</p>
       <p className='text-red-500'>{message}</p>
       <input type="file" onChange={e => storeFile(e)} />
-      <button className='fill-sky-100 stroke-sky-500' onClick={uploadFile} >Invia</button>
+      <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' onClick={uploadFile} >Invia</button>
     </>
   )
 }

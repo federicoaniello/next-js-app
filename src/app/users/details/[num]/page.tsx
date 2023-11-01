@@ -1,7 +1,6 @@
-import { Children } from '@/interfaces/IChildren';
 import React from 'react';
 
-interface Props extends Children {
+interface Props {
     params:{
         num:number
     }
