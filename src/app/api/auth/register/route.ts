@@ -24,5 +24,5 @@ export async function POST (req: NextRequest) {
                 }
             });
             if(!newUser) return NextResponse.json("Something went wrong", {status:500});
-            return NextResponse.redirect("/");
+            return NextResponse.json(newUser, {status:200});
 }

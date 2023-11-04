@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import React from 'react';
 import { useReducer } from 'react';
 
@@ -15,6 +16,7 @@ type TFormPayload = {
 };
 
 const RegisterUser = () => {
+    const router = useRouter();
     const initialState: TFormBody = {
         email: '',
         password: '',
@@ -46,6 +48,9 @@ const RegisterUser = () => {
                 method: 'POST',
                 body: JSON.stringify({email:form.email, password:form.password}),
             });
+            if(res){
+                router.push('/');
+            }
 
         } catch (error) {
             setErrorMap(error);
