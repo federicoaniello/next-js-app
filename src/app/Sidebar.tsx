@@ -19,6 +19,7 @@ const Sidebar = ({className}: Props) => {
       <Link className='bg-indigo-400 rounded py-2'  href="/users">Users</Link>
       <Link className='bg-indigo-400 rounded py-2'  href="/uploadImage">Upload</Link>
       {status === 'unauthenticated' && <Link className='bg-indigo-400 rounded py-2'  href="/api/auth/signin">Login</Link>}
+        { status === "unauthenticated" && <Link className='bg-indigo-400 rounded py-2' href="/register">Sign Up</Link>}
     </section>
   )
 }
