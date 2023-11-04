@@ -2,7 +2,7 @@ import './globals.scss'
 import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
 import Sidebar from './Sidebar';
-
+import AuthProvider from './auth/Provider';
 
 
 const roboto = Roboto({
@@ -26,12 +26,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={`w-full h-full ${roboto.className}`}>
       <body className="grid grid-cols-[1px_1fr] md:grid-cols-[200px_1fr] h-full">
+          <AuthProvider>
         <aside className="bg-slate-200 md:max-w-sm md:w-full overflow-hidden :hover:translate-x-[200]">
           <Sidebar></Sidebar>
         </aside>
         <main className="md:col-span-1 p-5">
-          {children}
+            {children}
         </main>
+          </AuthProvider>
       </body>
     </html>
   );
