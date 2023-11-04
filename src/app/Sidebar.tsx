@@ -2,11 +2,13 @@
 import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import React from 'react'
-
-const Sidebar = () => {
+interface Props {
+  className?: string
+}
+const Sidebar = ({className}: Props) => {
   const { data:session, status } = useSession();
   return (
-    <section className='p-3 flex flex-col gap-3 text-center '>
+    <section className={`p-3 flex flex-col gap-3 text-center ${className}`}>
       {status === 'authenticated' && 
       <div className='flex flex-col'>
         <p className='text-2xl text-black mb-1'>Benvenuto {session?.user?.name}</p>
@@ -16,7 +18,7 @@ const Sidebar = () => {
       <Link className='bg-indigo-400 rounded py-2' href="/admin">Admin</Link>
       <Link className='bg-indigo-400 rounded py-2'  href="/users">Users</Link>
       <Link className='bg-indigo-400 rounded py-2'  href="/uploadImage">Upload</Link>
-      {status === 'unauthenticated' && <Link className='bg-indigo-400 rounded py-2'  href="/api/auth/signin">Sign In</Link>}
+      {status === 'unauthenticated' && <Link className='bg-indigo-400 rounded py-2'  href="/api/auth/signin">Login</Link>}
     </section>
   )
 }

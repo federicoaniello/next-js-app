@@ -25,16 +25,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`w-full h-full ${roboto.className}`}>
-      <body className="grid grid-cols-[1px_1fr] md:grid-cols-[200px_1fr] h-full">
           <AuthProvider>
-        <aside className="bg-slate-200 md:max-w-sm md:w-full overflow-hidden :hover:translate-x-[200]">
-          <Sidebar></Sidebar>
+      <body>
+        <main className='md:grid md:grid-cols-[200px_1fr] min-h-[100dvh]'>
+        <aside className="h-[50px] sm:h-[50px] md:h-full hover:h-full bg-slate-200 md:max-w-sm md:w-full overflow-hidden :hover:translate-x-[200]">
+          <Sidebar className="text-red"></Sidebar>
         </aside>
-        <main className="md:col-span-1 p-5">
+        <div className="col-span-1 p-5">
             {children}
+        </div>
         </main>
-          </AuthProvider>
       </body>
+          </AuthProvider>
     </html>
   );
 }
