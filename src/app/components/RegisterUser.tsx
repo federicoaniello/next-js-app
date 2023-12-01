@@ -37,7 +37,7 @@ const RegisterUser = () => {
     }
 
     const [form, setForm] = useReducer(reducer, initialState);
-    const [errorMap, setErrorMap] = React.useState<any>(null);
+    const [errorMap, setErrorMap] = React.useState<string | null>(null);
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if(form.password.trim() !== form.password_confirmation.trim() || form.email.trim() === '' || form.password.trim() === '' || form.password_confirmation.trim() === ''){
@@ -52,7 +52,7 @@ const RegisterUser = () => {
                 router.push('/');
             }
 
-        } catch (error) {
+        } catch (error: any) {
             setErrorMap(error);
         }
     }
