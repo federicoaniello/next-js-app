@@ -1,25 +1,20 @@
-'use client';
-import { useSession } from 'next-auth/react'
-import Link from 'next/link'
 import React from 'react'
+import SidebarLink from './SidebarLink';
+import SidebarWelcome from './SidebarWelcome';
 interface Props {
   className?: string
 }
 const Sidebar = ({className}: Props) => {
-  const { data:session, status } = useSession();
   return (
     <section className={`p-3 flex flex-col gap-3 text-center ${className}`}>
-      {status === 'authenticated' && 
-      <div className='flex flex-col'>
-        <p className='text-2xl text-black mb-1'>Benvenuto {session?.user?.name}</p>
-        <Link className='bg-indigo-400 rounded py-2' href="/api/auth/signout">Log out</Link>
-        </div>}
-      <Link className='bg-indigo-400 rounded py-2' href="/">Home</Link>
-      <Link className='bg-indigo-400 rounded py-2' href="/admin">Admin</Link>
-      <Link className='bg-indigo-400 rounded py-2'  href="/users">Users</Link>
-      <Link className='bg-indigo-400 rounded py-2'  href="/uploadImage">Upload</Link>
-      {status === 'unauthenticated' && <Link className='bg-indigo-400 rounded py-2'  href="/api/auth/signin">Login</Link>}
-        { status === "unauthenticated" && <Link className='bg-indigo-400 rounded py-2' href="/register">Sign Up</Link>}
+      <SidebarWelcome />
+        <SidebarLink label='Home' href='/' />
+        <SidebarLink label='Admin' href='/admin' />
+        <SidebarLink label='Users' href='/users' />
+        <SidebarLink label='Upload' href='/uploadImage' />
+        <SidebarLink label='Login' href='/api/auth/signin' requiresAuth={true} />
+        <SidebarLink label='Sign Up' href='/register' requiresAuth={true} />
+
     </section>
   )
 }
