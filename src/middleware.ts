@@ -9,8 +9,8 @@ export const config = {
     // + uno o più parametri
     // ? zero o un parametro
     matcher: [
-        '/api/:path*',
-        '/uploadImage/:path*',
-        '/users'
+        // '/api/:path*',
+        // '/uploadImage/:path*',
+        // '/users'
     ]
 }

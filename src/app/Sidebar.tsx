@@ -14,6 +14,8 @@ const Sidebar = ({className}: Props) => {
         <SidebarLink label='Upload' href='/uploadImage' />
         <SidebarLink label='Login' href='/api/auth/signin' requiresAuth={true} />
         <SidebarLink label='Sign Up' href='/register' requiresAuth={true} />
+        <SidebarLink label='Weather' href='/weather' requiresAuth={false} />
+
 
     </section>
   )
