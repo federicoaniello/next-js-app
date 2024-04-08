@@ -10,6 +10,8 @@ export default async function Home() {
   return (
     <main className="flex">
       {session && session.user ?  <p className="text-black">Benvenuto {session.user.name}</p> : null}
+
+      <video data-html5-video="" preload="auto" src="blob:https://claplivehdplay.ru/469f00fe-bf41-4b23-a483-3b382f911065"></video>
     </main>
   );
 }
