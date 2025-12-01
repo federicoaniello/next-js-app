@@ -11,7 +11,7 @@ set these strings:
 
 ```bash
 AWS_ACCESS_KEY_ID=<set your aws key here>
-API_NINJAS_KEY=h40zVsn1GyESTU01L3orBQ==p8cRq0KvapMmHkHw //questa chiave serve per ottenere lat e long della città
+API_NINJAS_KEY=<api ninjas key>
 AWS_SECRET_ACCESS_KEY=<set your aws secret here>
 BUCKET_NAME=<set your s3 bucket name here>
 DATABASE_URL=postgresql://postgres:postgres@localhost:5432/postgres
